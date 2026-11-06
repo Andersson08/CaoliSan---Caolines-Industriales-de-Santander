@@ -2,6 +2,7 @@
   "nombre": "CaoliSan",
   "razon": "Caolines Industriales de Santander",
   "telefono": "3132527266",
+  "otrosTelefonos": ["3227736141", "3213564564"],
   "whatsapp": "573132527266",
   "municipio": "Oiba",
   "departamento": "Santander",

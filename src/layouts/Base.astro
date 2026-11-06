@@ -7,9 +7,10 @@ const esquema = {
   name: n.nombre,
   legalName: n.razon,
   description: descripcion,
-  telephone: "+57" + n.telefono,
+  telephone: ["+57" + n.telefono, ...(n.otrosTelefonos ?? []).map((t) => "+57" + t)],
   url: Astro.site?.toString(),
   image: new URL("/logo-caolisan.png", Astro.site).toString(),
+  logo: new URL("/favicon-512.png", Astro.site).toString(),
   address: {
     "@type": "PostalAddress",
     streetAddress: "Vereda " + n.vereda,
@@ -27,7 +28,10 @@ const esquema = {
     <title>{titulo}</title>
     <meta name="description" content={descripcion} />
     <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="/favicon-192.png" type="image/png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta property="og:title" content={titulo} />
     <meta property="og:description" content={descripcion} />
     <meta property="og:type" content="website" />

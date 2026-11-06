@@ -7,6 +7,28 @@
 
   requestAnimationFrame(() => document.body.classList.add("cargado"));
 
+  const raiz = document.documentElement;
+  const metaColor = $('meta[name="theme-color"]');
+  const pintarTema = () => {
+    const claro = raiz.dataset.tema === "claro";
+    if (metaColor) metaColor.content = claro ? "#f5f7fb" : "#050608";
+    const b = $("#tema");
+    if (b) b.setAttribute("aria-label", claro ? "Cambiar a modo oscuro" : "Cambiar a modo claro");
+  };
+  pintarTema();
+  $("#tema")?.addEventListener("click", () => {
+    raiz.dataset.tema = raiz.dataset.tema === "claro" ? "oscuro" : "claro";
+    try { localStorage.setItem("tema", raiz.dataset.tema); } catch (e) {}
+    pintarTema();
+  });
+  matchMedia("(prefers-color-scheme: light)").addEventListener("change", (e) => {
+    let guardado = null;
+    try { guardado = localStorage.getItem("tema"); } catch (er) {}
+    if (guardado) return;
+    raiz.dataset.tema = e.matches ? "claro" : "oscuro";
+    pintarTema();
+  });
+
   $$("[data-retraso]").forEach((el) => el.style.setProperty("--retraso", `${Number(el.dataset.retraso) * 80}ms`));
 
   const contar = (el) => {
