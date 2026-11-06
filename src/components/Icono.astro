@@ -1,0 +1,26 @@
+---
+const { nombre, size = 28 } = Astro.props;
+const trazos = {
+  escudo: '<path d="M12 3 4 6v6c0 5 3.4 8.6 8 9.9 4.6-1.3 8-4.9 8-9.9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/>',
+  camion: '<path d="M2 6h11v10H2zM13 10h4l3 3v3h-7z"/><circle cx="6" cy="18" r="2"/><circle cx="17" cy="18" r="2"/>',
+  mina: '<path d="M3 20h18M5 20l5-9 3 4 2-3 4 8"/><path d="m14 4 4 4M18 4l-4 4"/>',
+  bulto: '<path d="M7 4h10l1 3-1 2 1 11H6L7 9 6 7z"/><path d="M6 7h12M9 13h6"/>',
+  balanza: '<path d="M12 3v18M5 21h14M5 7h14"/><path d="m5 7-3 6a3 3 0 0 0 6 0zM19 7l-3 6a3 3 0 0 0 6 0z"/>',
+  reloj: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  filtro: '<path d="M3 4h18l-7 8v6l-4 2v-8z"/>',
+  ceramica: '<path d="M8 3h8M9 3v3c-3 1.5-5 4.5-5 8a8 8 0 0 0 16 0c0-3.5-2-6.5-5-8V3"/><path d="M5 14h14"/>',
+  pintura: '<rect x="3" y="3" width="15" height="6" rx="1"/><path d="M18 6h3v5h-9v3"/><rect x="10" y="14" width="4" height="7" rx="1"/>',
+  hoja: '<path d="M5 19c0-8 5-14 15-15-1 10-7 15-15 15z"/><path d="M5 19 13 11"/>',
+  ladrillo: '<rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 12h18M9 5v7M15 12v7"/>',
+  papel: '<path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h7"/>',
+  gota: '<path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/>',
+  apreton: '<path d="m2 12 4-4 4 2 3-2 4 1 5 3"/><path d="m6 13 4 4c.8.8 2 .8 2.8 0l4.7-4.7M2 12l4 1"/>',
+  whatsapp: '<path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/><path d="M9 9.5c.3 2 2.5 4.2 4.5 4.5l1-1 2 1-.5 1.5c-3 .5-7.5-4-7-7L10.5 8l1 2z"/>',
+  telefono: '<path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/>',
+  pin: '<path d="M12 21s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/>',
+  flecha: '<path d="M5 12h14M13 6l6 6-6 6"/>',
+  play: '<path d="M8 5v14l11-7z"/>'
+};
+const svg = trazos[nombre] ?? "";
+---
+<svg class="icono" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={svg} />

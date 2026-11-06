@@ -1,0 +1,29 @@
+---
+const { peso } = Astro.props;
+const etiqueta = peso === 0 ? "TON" : `${peso}`;
+const sub = peso === 0 ? "GRANEL" : "KG";
+---
+<svg class="bulto" viewBox="0 0 120 140" aria-hidden="true" data-peso={peso}>
+  <defs>
+    <linearGradient id={`saco-${peso}`} x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f4f6fa" />
+      <stop offset="1" stop-color="#b9c2d0" />
+    </linearGradient>
+  </defs>
+  <g class="bulto-g">
+    {peso === 0 ? (
+      <>
+        <path d="M14 112c6-34 20-58 46-58s40 24 46 58z" fill={`url(#saco-${peso})`} />
+        <path d="M30 100c8-18 18-28 30-28" fill="none" stroke="#ffffff" stroke-opacity=".6" stroke-width="3" stroke-linecap="round" />
+      </>
+    ) : (
+      <>
+        <path d="M30 20q30-8 60 0l6 14q-4 8 0 16l4 60q-40 10-80 0l4-60q4-8 0-16z" fill={`url(#saco-${peso})`} />
+        <path d="M30 20q30 8 60 0" fill="none" stroke="#8d97a8" stroke-width="2" />
+        <path d="M24 34q36 6 72 0" fill="none" stroke="#8d97a8" stroke-opacity=".6" stroke-width="1.5" stroke-dasharray="3 3" />
+      </>
+    )}
+    <text x="60" y={peso === 0 ? 98 : 78} text-anchor="middle" class="bulto-num">{etiqueta}</text>
+    <text x="60" y={peso === 0 ? 110 : 94} text-anchor="middle" class="bulto-sub">{sub}</text>
+  </g>
+</svg>

@@ -1,0 +1,48 @@
+---
+import n from "../data/negocio.json";
+const { titulo, descripcion } = Astro.props;
+const esquema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: n.nombre,
+  legalName: n.razon,
+  description: descripcion,
+  telephone: "+57" + n.telefono,
+  url: Astro.site?.toString(),
+  image: new URL("/logo-caolisan.png", Astro.site).toString(),
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Vereda " + n.vereda,
+    addressLocality: n.municipio,
+    addressRegion: n.departamento,
+    addressCountry: "CO"
+  }
+};
+---
+<!doctype html>
+<html lang="es-CO">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{titulo}</title>
+    <meta name="description" content={descripcion} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:title" content={titulo} />
+    <meta property="og:description" content={descripcion} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_CO" />
+    <meta property="og:image" content={new URL("/img/hero.jpg", Astro.site)} />
+    <meta name="theme-color" content="#050608" />
+    <link rel="preload" href="/fonts/oswald-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/estilos.css" />
+    <script src="/js.js" is:inline></script>
+    <script type="application/ld+json" set:html={JSON.stringify(esquema)} />
+  </head>
+  <body>
+    <slot />
+    <script src="/efectos.js" is:inline defer></script>
+    <script src="/cotizar.js" is:inline defer></script>
+  </body>
+</html>

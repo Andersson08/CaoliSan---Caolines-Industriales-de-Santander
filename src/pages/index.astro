@@ -1,0 +1,256 @@
+---
+import Base from "../layouts/Base.astro";
+import Icono from "../components/Icono.astro";
+import Bulto from "../components/Bulto.astro";
+import n from "../data/negocio.json";
+const wa = (t) => `https://wa.me/${n.whatsapp}?text=${encodeURIComponent(t)}`;
+const saludo = wa(`Hola ${n.nombre}, quiero información sobre el caolín.`);
+const tel = `tel:+57${n.telefono}`;
+const telVisible = n.telefono.replace(/(\d{3})(\d{3})(\d{4})/, "$1 $2 $3");
+const lugar = n.mapa.lat != null ? `${n.mapa.lat},${n.mapa.lng}` : `${n.municipio}, ${n.departamento}, Colombia`;
+const mapa = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(lugar)}`;
+const mapaEmbed = `https://www.google.com/maps?q=${encodeURIComponent(lugar)}&z=${n.mapa.zoom}&output=embed&hl=es`;
+const frase = "Un mineral blanco que está en tu baldosa, en tu pintura, en tu cultivo y en tu obra. Lo sacamos de la tierra santandereana y lo llevamos hasta donde lo necesites.";
+const anio = new Date().getFullYear();
+---
+<Base
+  titulo={`${n.nombre} | Venta de caolín por bultos y toneladas en ${n.municipio}, ${n.departamento}`}
+  descripcion={`${n.razon}: venta de caolín en bultos de 25, 40 y 50 kg y por toneladas. Despachos desde ${n.municipio}, ${n.departamento}. Cotiza por WhatsApp o llámanos.`}
+>
+  <div class="progreso" aria-hidden="true"><span></span></div>
+
+  <header class="nav" id="nav">
+    <div class="contenedor nav-in">
+      <a href="#inicio" class="marca"><img src="/logo-caolisan.png" alt={`${n.nombre} - ${n.razon}`} width="158" height="48" /></a>
+      <nav aria-label="Principal" class="nav-links">
+        <a href="#proceso">Proceso</a>
+        <a href="#productos">Productos</a>
+        <a href="#usos">Usos</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <a class="btn btn-azul btn-sm" href="#cotizar">Cotizar</a>
+    </div>
+  </header>
+
+  <ol class="indicador" aria-hidden="true">
+    <li data-ir="inicio">01</li>
+    <li data-ir="proceso">02</li>
+    <li data-ir="productos">03</li>
+    <li data-ir="cotizar">04</li>
+  </ol>
+
+  <main>
+    <section id="inicio" class="hero" data-seccion>
+      <div class="hero-fondo" data-parallax="0.25"><img src="/img/hero.jpg" alt="" width="1600" height="900" fetchpriority="high" /></div>
+      <div class="hero-velo"></div>
+      <div class="contenedor hero-in">
+        <p class="kicker aparece">{n.municipio} · {n.departamento} · Colombia</p>
+        <h1 class="hero-titulo">
+          <span class="linea"><span>Caolín</span></span>
+          <span class="linea azul"><span>puro.</span></span>
+          <span class="linea"><span>Directo de</span></span>
+          <span class="linea azul"><span>la mina.</span></span>
+        </h1>
+        <p class="hero-sub aparece">Bultos de 25, 40 y 50 kg y despachos por toneladas para la industria, el campo y la construcción.</p>
+        <div class="hero-btns aparece">
+          <a class="btn btn-azul" href="#cotizar">Cotizar ahora <Icono nombre="flecha" size={18} /></a>
+          <a class="btn btn-vidrio" href={tel}><Icono nombre="telefono" size={18} /> {telVisible}</a>
+        </div>
+      </div>
+      <ul class="chips aparece">
+        {n.chips.map((c) => <li><Icono nombre={c.icono} size={18} />{c.texto}</li>)}
+      </ul>
+      <a href="#cifras" class="bajar" aria-label="Bajar"><span></span></a>
+    </section>
+
+    <section id="cifras" class="contenedor cifras-wrap">
+      <div class="cifras vidrio aparece">
+        {n.cifras.map((c) => (
+          <div class="cifra">
+            <span class="cifra-ico"><Icono nombre={c.icono} size={30} /></span>
+            <div>
+              <p class="cifra-num"><span data-contar={c.valor}>0</span>{c.sufijo}</p>
+              <p class="cifra-txt">{c.texto}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section id="proceso" class="foco" data-seccion data-pin>
+      <div class="foco-sticky">
+        <div class="contenedor foco-in">
+          <div class="foco-visual">
+            <svg class="anillo" viewBox="0 0 400 400" aria-hidden="true">
+              <circle cx="200" cy="200" r="185" pathLength="1" />
+            </svg>
+            <img class="roca" src="/img/caolin.webp" alt="Roca de caolín" width="736" height="759" loading="lazy" />
+          </div>
+          <div class="foco-texto">
+            <p class="etq">Qué hacemos</p>
+            <h2>Minería con<br />propósito y precisión</h2>
+            <p class="lead">De la vereda {n.vereda} a tu planta: controlamos cada paso para que recibas caolín listo para trabajar.</p>
+            <div class="pasos">
+              {n.proceso.map((p, i) => (
+                <div class="paso" data-paso={i}>
+                  <span class="paso-ico"><Icono nombre={p.icono} size={26} /></span>
+                  <div>
+                    <h3>{p.titulo}</h3>
+                    <p>{p.texto}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <a class="btn btn-borde" href="#productos">Ver presentaciones <Icono nombre="flecha" size={18} /></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="frase contenedor" aria-label="Sobre el caolín">
+      <p class="frase-txt" data-frase>{frase.split(" ").map((p) => <span>{p} </span>)}</p>
+    </section>
+
+    <section id="productos" class="contenedor bento" data-seccion>
+      <article class="tarjeta mapa-card aparece">
+        <p class="etq">Desde Oiba para Colombia</p>
+        <h2 class="h3">Ubicación y despachos</h2>
+        <div class="mapa">
+          <iframe src={mapaEmbed} title={`Ubicación de ${n.nombre} en ${n.municipio}, ${n.departamento}`} loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+        <div class="mina-dato">
+          <div>
+            <p class="mina-nom">Mina {n.nombre}</p>
+            <p class="mina-lug">Vereda {n.vereda}, {n.municipio}</p>
+          </div>
+          <div class="estado"><span class="punto"></span>En operación</div>
+        </div>
+        <a class="enlace" href={mapa} target="_blank" rel="noopener noreferrer">Ver en Google Maps <Icono nombre="flecha" size={16} /></a>
+      </article>
+
+      <article class="tarjeta prod-card aparece">
+        <p class="etq">Presentaciones</p>
+        <h2 class="h3">El bulto que tu obra necesita</h2>
+        <div class="bultos" data-carrusel>
+          {n.presentaciones.map((p) => (
+            <a class="bulto-item" href={wa(p.peso ? `Hola ${n.nombre}, quiero cotizar caolín en bultos de ${p.peso} kg.` : `Hola ${n.nombre}, quiero cotizar caolín por toneladas.`)} target="_blank" rel="noopener noreferrer">
+              <Bulto peso={p.peso} />
+              <span class="bulto-tit">{p.titulo}</span>
+              <span class="bulto-det">{p.detalle}</span>
+            </a>
+          ))}
+        </div>
+        <p class="nota">Precio según volumen. Entre más cantidad, mejor precio.</p>
+      </article>
+
+      <article class="tarjeta valores-card aparece">
+        <div class="valores-foto" data-parallax="0.08"><img src="/img/bodega.jpg" alt="" width="1200" height="800" loading="lazy" /></div>
+        <div class="valores-in">
+          <div>
+            <h2 class="h2-card">Calidad.<br />Confianza.<br />Cumplimiento.</h2>
+            <p>Trato directo con el productor: sin intermediarios, con la seriedad que exige un pedido grande.</p>
+            <a class="btn btn-azul btn-sm" href="#cotizar">Hablemos <Icono nombre="flecha" size={16} /></a>
+          </div>
+          <ul class="valores">
+            {n.valores.map((v) => (
+              <li><span class="v-ico"><Icono nombre={v.icono} size={22} /></span><strong>{v.titulo}</strong><small>{v.texto}</small></li>
+            ))}
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <section id="usos" class="contenedor usos-sec">
+      <div class="cabecera aparece">
+        <p class="etq">Industrias que abastecemos</p>
+        <h2>Un mineral.<br /><span class="azul">Mil usos.</span></h2>
+      </div>
+      <div class="usos">
+        {n.usos.map((u, i) => (
+          <article class="uso aparece" data-retraso={i}>
+            <span class="uso-ico"><Icono nombre={u.icono} size={30} /></span>
+            <h3>{u.titulo}</h3>
+            <p>{u.texto}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="cotizar" class="contenedor" data-seccion>
+      <div class="cotizar vidrio aparece">
+        <div class="cotizar-fondo"><img src="/img/hero.jpg" alt="" width="1600" height="900" loading="lazy" /></div>
+        <div class="cotizar-texto">
+          <p class="etq">Cotiza en un minuto</p>
+          <h2>Tu pedido,<br />directo a WhatsApp.</h2>
+          <p>Llena los datos y te abrimos WhatsApp con el mensaje listo. Solo tienes que enviarlo.</p>
+          <ul class="ticks">
+            <li>Atención directa del productor</li>
+            <li>Despachos desde {n.municipio}, {n.departamento}</li>
+            <li>Respuesta el mismo día</li>
+          </ul>
+        </div>
+        <form id="form-cotizar" class="form" data-whatsapp={n.whatsapp} data-nombre={n.nombre}>
+          <label>Presentación
+            <select name="presentacion" required>
+              {n.presentaciones.filter((p) => p.peso).map((p) => <option value={`bultos de ${p.peso} kg`}>Bultos de {p.peso} kg</option>)}
+              <option value="a granel por toneladas">A granel / por toneladas</option>
+            </select>
+          </label>
+          <div class="fila">
+            <label>Cantidad
+              <input name="cantidad" type="number" min="1" max="100000" step="1" inputmode="numeric" required />
+            </label>
+            <label>Unidad
+              <select name="unidad">
+                <option value="toneladas">Toneladas</option>
+                <option value="bultos">Bultos</option>
+              </select>
+            </label>
+          </div>
+          <label>Ciudad o municipio de entrega
+            <input name="ciudad" type="text" maxlength="60" autocomplete="address-level2" required />
+          </label>
+          <label>Nombre o empresa <span class="opc">(opcional)</span>
+            <input name="cliente" type="text" maxlength="60" autocomplete="organization" />
+          </label>
+          <button type="submit" class="btn btn-azul btn-full"><Icono nombre="whatsapp" size={20} /> Enviar por WhatsApp</button>
+          <noscript><a class="btn btn-azul btn-full" href={saludo}>Escribir por WhatsApp</a></noscript>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contacto" class="pie">
+    <div class="contenedor pie-in">
+      <div class="pie-marca">
+        <img src="/logo-caolisan.png" alt={n.nombre} width="158" height="48" loading="lazy" />
+        <p>Caolín de Santander para la industria, el campo y la construcción.</p>
+      </div>
+      <div class="pie-col">
+        <h3>Empresa</h3>
+        <a href="#proceso">Proceso</a>
+        <a href="#productos">Productos</a>
+        <a href="#usos">Usos</a>
+      </div>
+      <div class="pie-col">
+        <h3>Pedidos</h3>
+        <a href="#cotizar">Cotizar</a>
+        <a href={saludo} target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <a href={tel}>Llamar</a>
+      </div>
+      <div class="pie-contacto vidrio">
+        <h3>Contáctanos</h3>
+        <p><Icono nombre="pin" size={18} /> Vereda {n.vereda}, {n.municipio}, {n.departamento}</p>
+        <p><Icono nombre="telefono" size={18} /> <a href={tel}>{telVisible}</a></p>
+        <p><Icono nombre="reloj" size={18} /> {n.horario}</p>
+      </div>
+    </div>
+    <div class="contenedor pie-base">
+      <p>© {anio} {n.nombre} · {n.razon}</p>
+    </div>
+  </footer>
+
+  <a class="flotante" href={saludo} target="_blank" rel="noopener noreferrer" aria-label="Escribir por WhatsApp">
+    <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-1-2.2-1-.3-.1-.5-.2-.7.1l-1 1.2c-.2.2-.4.3-.7.1a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.7s1.2 3.2 1.3 3.4c.2.2 2.3 3.5 5.6 4.9 2.1.9 2.9 1 4 .8.6-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5l-.6-.3z"/></svg>
+  </a>
+</Base>
