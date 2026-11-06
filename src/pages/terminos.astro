@@ -1,0 +1,43 @@
+---
+import Legal from "../components/Legal.astro";
+import n from "../data/negocio.json";
+---
+<Legal
+  titulo={`Términos y condiciones | ${n.nombre}`}
+  descripcion={`Términos y condiciones de uso de la página de ${n.nombre} – ${n.razon}.`}
+  h1="Términos y condiciones"
+>
+  <h2>1. Quiénes somos</h2>
+  <p>Esta página pertenece a {n.titular}, persona natural con NIT {n.nit}, que opera con el nombre comercial {n.nombre} – {n.razon}, con domicilio en la vereda {n.vereda}, {n.municipio}, {n.departamento}, Colombia.</p>
+
+  <h2>2. Para qué sirve esta página</h2>
+  <p>La página informa sobre el caolín que vendemos y permite pedir cotizaciones. <strong>No se hacen compras ni pagos en línea.</strong> Todo pedido se acuerda directamente con nosotros por WhatsApp, llamada o en persona.</p>
+
+  <h2>3. Información de referencia</h2>
+  <p>Las descripciones, usos, cifras y presentaciones publicadas son de referencia y pueden cambiar sin previo aviso. Algunas imágenes son ilustrativas y pueden no corresponder exactamente a nuestras instalaciones, equipos o productos.</p>
+
+  <h2>4. Cotizaciones y pedidos</h2>
+  <ul>
+    <li>Los precios se dan únicamente por cotización, según la presentación, la cantidad y el lugar de entrega.</li>
+    <li>Cada cotización indica su vigencia y está sujeta a disponibilidad.</li>
+    <li>Las condiciones de pago, despacho y entrega se acuerdan con cada cliente antes de confirmar el pedido.</li>
+  </ul>
+
+  <h2>5. Calidad, garantía y reclamos</h2>
+  <p>Respondemos por la calidad e idoneidad de lo que vendemos, en los términos de la Ley 1480 de 2011 (Estatuto del Consumidor) cuando aplique. Si tienes un problema con un pedido, escríbenos o llámanos lo antes posible, con el detalle del pedido y fotos si es posible, para darte una solución.</p>
+
+  <h2>6. Propiedad intelectual</h2>
+  <p>El nombre {n.nombre}, el logo, los textos y el diseño de esta página son de su titular. No se pueden copiar ni usar con fines comerciales sin autorización.</p>
+
+  <h2>7. Enlaces a otros servicios</h2>
+  <p>La página tiene enlaces a WhatsApp y Google Maps. Esos servicios tienen sus propias condiciones y políticas de privacidad, y no somos responsables de su funcionamiento.</p>
+
+  <h2>8. Datos personales</h2>
+  <p>El uso de tus datos se rige por nuestra <a href="/privacidad">Política de tratamiento de datos personales</a>.</p>
+
+  <h2>9. Ley aplicable</h2>
+  <p>Estos términos se rigen por las leyes de la República de Colombia.</p>
+
+  <h2>10. Cambios</h2>
+  <p>Podemos actualizar estos términos. La versión vigente es la publicada en esta página, con su fecha.</p>
+</Legal>

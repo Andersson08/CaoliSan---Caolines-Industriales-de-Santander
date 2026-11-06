@@ -1,6 +1,10 @@
 {
   "nombre": "CaoliSan",
   "razon": "Caolines Industriales de Santander",
+  "titular": "Eliberto Tapias Rincón",
+  "nit": "91.455.812-8",
+  "correo": "contacto@caolisan.com",
+  "vigenciaLegal": "6 de noviembre de 2026",
   "telefono": "3132527266",
   "otrosTelefonos": ["3227736141", "3213564564"],
   "whatsapp": "573132527266",

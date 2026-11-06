@@ -11,6 +11,8 @@ const esquema = {
   url: Astro.site?.toString(),
   image: new URL("/logo-caolisan.png", Astro.site).toString(),
   logo: new URL("/favicon-512.png", Astro.site).toString(),
+  email: n.correo ?? undefined,
+  taxID: n.nit,
   address: {
     "@type": "PostalAddress",
     streetAddress: "Vereda " + n.vereda,

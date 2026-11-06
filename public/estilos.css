@@ -361,3 +361,18 @@ input:focus, select:focus { outline: none; border-color: var(--azul-vivo); box-s
 .pie-contacto .tel-wa { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; color: #1f9d55; background: rgba(31, 157, 85, .12); transition: background .2s, transform .3s var(--suave-curva); }
 .pie-contacto .tel-wa .icono { color: inherit; margin-top: 0; }
 .pie-contacto .tel-wa:hover { background: rgba(31, 157, 85, .22); transform: scale(1.08); }
+
+.aviso-datos { color: var(--tenue); font-size: .76rem; line-height: 1.45; }
+.aviso-datos a, .pie-legal a, .legal-pie a { color: var(--suave); }
+.aviso-datos a:hover, .pie-legal a:hover, .legal-pie a:hover { color: var(--texto); }
+.pie-base { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .6rem 1.5rem; }
+.legal { max-width: 780px; padding: 130px 0 5rem; }
+.legal h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: .6rem; }
+.legal-fecha { color: var(--tenue); font-size: .88rem; margin-bottom: 2.5rem; }
+.legal-txt h2 { font-size: 1.35rem; margin: 2.2rem 0 .8rem; }
+.legal-txt p, .legal-txt li { color: var(--suave); font-size: .98rem; line-height: 1.7; }
+.legal-txt p + p { margin-top: .8rem; }
+.legal-txt ul { margin: .6rem 0 0; padding-left: 1.2rem; display: grid; gap: .45rem; }
+.legal-txt strong { color: var(--texto); font-weight: 600; }
+.legal-txt a { color: var(--azul-vivo); }
+.legal-pie { margin-top: 0; border-top: 0; padding-top: 0; }
