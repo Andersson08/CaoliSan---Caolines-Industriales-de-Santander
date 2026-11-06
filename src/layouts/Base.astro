@@ -1,5 +1,9 @@
 ---
 import n from "../data/negocio.json";
+import { readFileSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { join } from "node:path";
+const ver = (f) => createHash("sha1").update(readFileSync(join(process.cwd(), "public", f))).digest("hex").slice(0, 10);
 const { titulo, descripcion } = Astro.props;
 const esquema = {
   "@context": "https://schema.org",
@@ -42,13 +46,13 @@ const esquema = {
     <meta name="theme-color" content="#050608" />
     <link rel="preload" href="/fonts/oswald-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/estilos.css" />
-    <script src="/js.js" is:inline></script>
+    <link rel="stylesheet" href={`/estilos.css?v=${ver("estilos.css")}`} />
+    <script src={`/js.js?v=${ver("js.js")}`} is:inline></script>
     <script type="application/ld+json" set:html={JSON.stringify(esquema)} />
   </head>
   <body>
     <slot />
-    <script src="/efectos.js" is:inline defer></script>
-    <script src="/cotizar.js" is:inline defer></script>
+    <script src={`/efectos.js?v=${ver("efectos.js")}`} is:inline defer></script>
+    <script src={`/cotizar.js?v=${ver("cotizar.js")}`} is:inline defer></script>
   </body>
 </html>
