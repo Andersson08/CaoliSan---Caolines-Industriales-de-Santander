@@ -19,27 +19,25 @@
     { "icono": "mina", "texto": "Directo de la mina" }
   ],
   "cifras": [
-    { "icono": "bulto", "valor": 3, "sufijo": "", "texto": "Presentaciones de bulto" },
-    { "icono": "balanza", "valor": 50, "sufijo": " kg", "texto": "Bulto más grande" },
+    { "icono": "bulto", "valor": 2, "sufijo": "", "texto": "Presentaciones de bulto" },
+    { "icono": "balanza", "valor": 40, "sufijo": " kg", "texto": "Bulto más grande" },
     { "icono": "camion", "valor": 1, "sufijo": " t+", "texto": "Pedidos por tonelada" },
     { "icono": "reloj", "valor": 24, "sufijo": " h", "texto": "Respuesta a cotizaciones" }
   ],
   "proceso": [
     { "icono": "mina", "titulo": "Extracción", "texto": "Caolín extraído en la vereda Barroblanco, Oiba." },
     { "icono": "filtro", "titulo": "Selección", "texto": "Material seleccionado para una calidad pareja en cada lote." },
-    { "icono": "bulto", "titulo": "Empaque", "texto": "Bultos de 25, 40 y 50 kg, o a granel por toneladas." },
+    { "icono": "bulto", "titulo": "Empaque", "texto": "Bultos de caolín pulverizado de 25 y 40 kg, o a granel por toneladas." },
     { "icono": "camion", "titulo": "Despacho", "texto": "Coordinamos la entrega hasta tu planta, obra o bodega." }
   ],
   "presentaciones": [
     { "peso": 25, "titulo": "Bulto 25 kg", "detalle": "Pedidos pequeños y manejo manual" },
-    { "peso": 40, "titulo": "Bulto 40 kg", "detalle": "Balance entre cantidad y carga" },
-    { "peso": 50, "titulo": "Bulto 50 kg", "detalle": "El más rendidor por volumen" },
+    { "peso": 40, "titulo": "Bulto 40 kg", "detalle": "Nuestro bulto más grande y rendidor" },
     { "peso": 0, "titulo": "Por toneladas", "detalle": "Industrias y distribuidores" }
   ],
   "usos": [
     { "icono": "ceramica", "titulo": "Cerámica", "texto": "Pastas, baldosas, loza y esmaltes." },
     { "icono": "pintura", "titulo": "Pinturas", "texto": "Carga que mejora cubrimiento y blancura." },
-    { "icono": "hoja", "titulo": "Agricultura", "texto": "Protección de cultivos contra sol y plagas." },
     { "icono": "ladrillo", "titulo": "Construcción", "texto": "Morteros, estucos y acabados." },
     { "icono": "papel", "titulo": "Papel y plásticos", "texto": "Carga y recubrimiento de opacidad." },
     { "icono": "gota", "titulo": "Cosmética", "texto": "Mascarillas, talcos y cuidado personal." }

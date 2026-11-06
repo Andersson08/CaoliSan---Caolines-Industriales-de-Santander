@@ -12,12 +12,12 @@ const telefonos = [n.telefono, ...(n.otrosTelefonos ?? [])];
 const lugar = n.mapa.lat != null ? `${n.mapa.lat},${n.mapa.lng}` : `${n.municipio}, ${n.departamento}, Colombia`;
 const mapa = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(lugar)}`;
 const mapaEmbed = `https://www.google.com/maps?q=${encodeURIComponent(lugar)}&z=${n.mapa.zoom}&output=embed&hl=es`;
-const frase = "Un mineral blanco que está en tu baldosa, en tu pintura, en tu cultivo y en tu obra. Lo sacamos de la tierra santandereana y lo llevamos hasta donde lo necesites.";
+const frase = "Un mineral blanco que está en tu baldosa, en tu pintura y en tu obra. Lo sacamos de la tierra santandereana y lo llevamos hasta donde lo necesites.";
 const anio = new Date().getFullYear();
 ---
 <Base
   titulo={`${n.nombre} | Venta de caolín por bultos y toneladas en ${n.municipio}, ${n.departamento}`}
-  descripcion={`${n.razon}: venta de caolín en bultos de 25, 40 y 50 kg y por toneladas. Despachos desde ${n.municipio}, ${n.departamento}. Cotiza por WhatsApp o llámanos.`}
+  descripcion={`${n.razon}: venta de caolín pulverizado en bultos de 25 y 40 kg y por toneladas. Despachos desde ${n.municipio}, ${n.departamento}. Cotiza por WhatsApp o llámanos.`}
 >
   <div class="progreso" aria-hidden="true"><span></span></div>
 
@@ -59,7 +59,7 @@ const anio = new Date().getFullYear();
           <span class="linea"><span>Directo de</span></span>
           <span class="linea azul"><span>la mina.</span></span>
         </h1>
-        <p class="hero-sub aparece">Bultos de 25, 40 y 50 kg y despachos por toneladas para la industria, el campo y la construcción.</p>
+        <p class="hero-sub aparece">Bultos de caolín pulverizado de 25 y 40 kg y despachos por toneladas para la industria y la construcción.</p>
         <div class="hero-btns aparece">
           <a class="btn btn-azul" href="#cotizar">Cotizar ahora <Icono nombre="flecha" size={18} /></a>
           <a class="btn btn-vidrio" href={tel}><Icono nombre="telefono" size={18} /> {telVisible}</a>
@@ -233,7 +233,7 @@ const anio = new Date().getFullYear();
     <div class="contenedor pie-in">
       <div class="pie-marca">
         <img src="/logo-caolisan.png" alt={n.nombre} width="158" height="48" loading="lazy" />
-        <p>Caolín de Santander para la industria, el campo y la construcción.</p>
+        <p>Caolín de Santander para la industria y la construcción.</p>
       </div>
       <div class="pie-col">
         <h3>Empresa</h3>
