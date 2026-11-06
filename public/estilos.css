@@ -378,3 +378,5 @@ input:focus, select:focus { outline: none; border-color: var(--azul-vivo); box-s
 .legal-txt a { color: var(--azul-vivo); }
 @media (max-width: 560px) { .legal { padding-top: 140px; } .legal-txt h2 { margin-top: 2.6rem; padding-top: 2rem; } }
 .legal-pie { margin-top: 0; border-top: 0; padding-top: 0; }
+.pie-base { padding-right: 90px; }
+@media (max-width: 560px) { .pie-base { padding-bottom: 70px; } }
