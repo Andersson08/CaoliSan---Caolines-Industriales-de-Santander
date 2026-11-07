@@ -381,3 +381,16 @@ input:focus, select:focus { outline: none; border-color: var(--azul-vivo); box-s
 .pie-base { padding-right: 90px; }
 @media (max-width: 560px) { .pie-base { padding-bottom: 70px; } }
 @media (min-width: 561px) { .uso:last-child:nth-child(3n + 2) { grid-column: span 2; } }
+
+.faq-sec { padding: 2rem 0 7rem; }
+.faq { display: grid; gap: .8rem; max-width: 900px; }
+.faq-item { border: 1px solid var(--linea-2); border-radius: 14px; background: linear-gradient(180deg, var(--panel-2), var(--panel)); transition: border-color .3s; }
+.faq-item[open] { border-color: rgba(74, 138, 240, .45); }
+.faq-item summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.2rem 1.4rem; font-weight: 600; font-size: 1.02rem; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary:focus-visible { outline: 2px solid var(--azul-vivo); outline-offset: 2px; border-radius: 14px; }
+.faq-mas { position: relative; flex: none; width: 22px; height: 22px; border-radius: 50%; background: rgba(74, 138, 240, .12); }
+.faq-mas::before, .faq-mas::after { content: ""; position: absolute; left: 50%; top: 50%; width: 10px; height: 2px; margin: -1px 0 0 -5px; border-radius: 2px; background: var(--azul-vivo); transition: transform .3s var(--suave-curva); }
+.faq-mas::after { transform: rotate(90deg); }
+.faq-item[open] .faq-mas::after { transform: rotate(0); }
+.faq-item p { padding: 0 1.4rem 1.3rem; color: var(--suave); font-size: .96rem; line-height: 1.7; }

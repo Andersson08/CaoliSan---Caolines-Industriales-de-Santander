@@ -14,6 +14,20 @@ const mapa = `https://www.google.com/maps/search/?api=1&query=${encodeURICompone
 const mapaEmbed = `https://www.google.com/maps?q=${encodeURIComponent(lugar)}&z=${n.mapa.zoom}&output=embed&hl=es`;
 const frase = "Un mineral blanco que está en tu baldosa, en tu pintura y en tu obra. Lo sacamos de la tierra santandereana y lo llevamos hasta donde lo necesites.";
 const anio = new Date().getFullYear();
+const preguntas = [
+  { p: "¿Qué es el caolín pulverizado?", r: "Es caolín, una arcilla blanca formada principalmente por el mineral caolinita, molido hasta quedar en polvo fino. Así se puede mezclar y usar directamente en procesos de cerámica, pinturas, construcción y otras industrias." },
+  { p: "¿En qué presentaciones venden el caolín?", r: `Vendemos caolín pulverizado en bultos de 25 kg y de 40 kg, y también despachamos pedidos por toneladas para industrias y distribuidores.` },
+  { p: "¿Para qué se usa el caolín?", r: "Se usa en cerámica (pastas, baldosas, loza y esmaltes), como carga en pinturas, en construcción (morteros, estucos y acabados), en papel y plásticos, y en cosmética (mascarillas y talcos)." },
+  { p: "¿Cuánto cuesta el caolín?", r: "El precio depende de la presentación, la cantidad y el lugar de entrega. Escríbenos por WhatsApp o llámanos con esos datos y te enviamos la cotización." },
+  { p: "¿Hacen envíos a otras ciudades?", r: `Sí. Despachamos desde ${n.municipio}, ${n.departamento}, a Santander y al resto de Colombia. El costo del transporte se incluye en la cotización según el destino y la cantidad.` },
+  { p: "¿Cómo hago un pedido?", r: "Llena el formulario de cotización de esta página, que te abre WhatsApp con el mensaje listo, o escríbenos o llámanos directamente. Ahí acordamos la cantidad, el pago y la entrega." },
+  { p: "¿Dónde queda la mina de CaoliSan?", r: `Nuestra mina está en la vereda ${n.vereda}, en ${n.municipio}, ${n.departamento}, Colombia. Vendemos directo del productor, sin intermediarios.` }
+];
+const esquemaFaq = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: preguntas.map((q) => ({ "@type": "Question", name: q.p, acceptedAnswer: { "@type": "Answer", text: q.r } }))
+};
 ---
 <Base
   titulo={`${n.nombre} | Venta de caolín por bultos y toneladas en ${n.municipio}, ${n.departamento}`}
@@ -28,6 +42,7 @@ const anio = new Date().getFullYear();
         <a href="#proceso">Proceso</a>
         <a href="#productos">Productos</a>
         <a href="#usos">Usos</a>
+        <a href="#preguntas">Preguntas</a>
         <a href="#contacto">Contacto</a>
       </nav>
       <div class="nav-der">
@@ -184,6 +199,22 @@ const anio = new Date().getFullYear();
       </div>
     </section>
 
+    <section id="preguntas" class="contenedor faq-sec">
+      <div class="cabecera aparece">
+        <p class="etq">Preguntas frecuentes</p>
+        <h2>Lo que mas<br /><span class="azul">nos preguntan.</span></h2>
+      </div>
+      <div class="faq aparece">
+        {preguntas.map((q) => (
+          <details class="faq-item">
+            <summary>{q.p}<span class="faq-mas" aria-hidden="true"></span></summary>
+            <p>{q.r}</p>
+          </details>
+        ))}
+      </div>
+      <script type="application/ld+json" set:html={JSON.stringify(esquemaFaq)} />
+    </section>
+
     <section id="cotizar" class="contenedor" data-seccion>
       <div class="cotizar vidrio aparece">
         <div class="cotizar-fondo"><img src="/img/hero.jpg" alt="" width="1920" height="728" loading="lazy" /></div>
@@ -240,6 +271,7 @@ const anio = new Date().getFullYear();
         <a href="#proceso">Proceso</a>
         <a href="#productos">Productos</a>
         <a href="#usos">Usos</a>
+        <a href="#preguntas">Preguntas</a>
       </div>
       <div class="pie-col">
         <h3>Pedidos</h3>
